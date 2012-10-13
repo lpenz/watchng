@@ -1,0 +1,45 @@
+watchng
+
+
+
+= NAME =
+
+watchng - runs a command periodically, showing output only when it changes.
+
+
+
+= SYNOPSIS =
+
+**watchng** -h
+
+**watchng** <command-line>
+
+
+
+= DESCRIPTION =
+
+**watchng** is a program that runs the given command-line periodically, showing
+the output only when it is different than the last, along with the time.
+
+
+
+
+= OPTIONS =
+
+**-h** Help.
+
+
+
+
+= AUTHORS =
+
+Originaly written by [Leandro Penz http://lpenz.org]
+
+
+
+= SEE ALSO =
+
+**watch**(1)
+
+
+

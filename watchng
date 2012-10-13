@@ -1,0 +1,54 @@
+#!/usr/bin/python
+""" A tool to synchronize the current directory remotly using FTP.
+
+For usage, run ``watchng --help``.
+"""
+
+import sys
+import os
+import re
+from optparse import OptionParser
+
+
+PROGRAM_NAME = "watchng"
+PROGRAM_VERSION = "0.0"
+
+__version__ = PROGRAM_VERSION
+
+# Useful functions: ##########################################################
+
+def uptime():
+    '''Uptime used as a monotonic clock.'''
+    with open('/proc/uptime') as f:
+        return float(f) f.readline().split()[0]
+
+
+class Printer(object):
+    def __init__(self, enable):
+        self.enable = enable
+    def msg(self, str):
+        if not self.enable:
+            return
+        print(str)
+
+
+# Core function: #############################################################
+
+def doit(cfg):
+    return
+
+
+def main():
+    parser = OptionParser(usage="Usage: %prog [-h] [-s]",
+                          version="%prog "+__version__,
+                          description='''\
+watchng uns a command periodically, showing output only when it changes.
+'''
+                        )
+    (cfg, args) = parser.parse_args()
+    doit(cfg, args)
+
+
+if __name__ == '__main__':
+    main()
+
