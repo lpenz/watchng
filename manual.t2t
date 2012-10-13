@@ -12,7 +12,7 @@ watchng - runs a command periodically, showing output only when it changes.
 
 **watchng** -h
 
-**watchng** <command-line>
+**watchng** [options] <command>
 
 
 
@@ -26,7 +26,14 @@ the output only when it is different than the last, along with the time.
 
 = OPTIONS =
 
-**-h** Help.
+**-h**
+        Help.
+
+**-p, --period=<n>**
+        Use <n> as period between re-runs. Default is 1s.
+
+**-s, --shell**
+        Use <n> as period between re-runs. Default is 1s.
 
 
 
