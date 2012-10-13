@@ -4,7 +4,7 @@ Priority: extra
 Maintainer: Leandro Lisboa Penz <lpenz@lpenz.org>
 Build-Depends: debhelper (>= 8.0.0)
 Standards-Version: 3.9.3
-Homepage: http://github.com/lpenz/watchng
+Vcs-Browser: http://github.com/lpenz/watchng
 Vcs-Git: git://github.com/lpenz/watchng.git
 Homepage: http://github.com/lpenz/watchng
 
