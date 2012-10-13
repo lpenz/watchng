@@ -1,0 +1,5 @@
+watchng (1.0-1) unstable; urgency=low
+
+  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- Leandro Lisboa Penz <lpenz@lpenz.org>  Fri, 12 Oct 2012 23:48:46 -0300
