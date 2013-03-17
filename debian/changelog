@@ -1,5 +1,11 @@
+watchng (1.0-2) unstable; urgency=low
+
+  * Signed with new key.
+
+ -- Leandro Lisboa Penz <lpenz@lpenz.org>  Sun, 17 Mar 2013 10:04:19 -0300
+
 watchng (1.0-1) unstable; urgency=low
 
-  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+  * Initial release.
 
  -- Leandro Lisboa Penz <lpenz@lpenz.org>  Fri, 12 Oct 2012 23:48:46 -0300
