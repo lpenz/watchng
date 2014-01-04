@@ -1,4 +1,3 @@
-
 <H1>NAME</H1>
 
 <P>
@@ -33,7 +32,7 @@ the output only when it is different than the last, along with the time.
 </P>
 <P>
 **-s, --shell**
-        Use &lt;n&gt; as period between re-runs. Default is 1s.
+        Run args with /bin/sh -c
 </P>
 
 <H1>AUTHORS</H1>
