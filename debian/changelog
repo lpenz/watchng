@@ -1,3 +1,9 @@
+watchng (1.1-1) unstable; urgency=medium
+
+  * New upstream version 1.1: doc fixes.
+
+ -- Leandro Lisboa Penz <lpenz@lpenz.org>  Sat, 12 Apr 2014 19:38:11 -0300
+
 watchng (1.0-2) unstable; urgency=low
 
   * Signed with new key.
