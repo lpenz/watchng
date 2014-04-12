@@ -2,7 +2,7 @@ Source: watchng
 Section: python
 Priority: extra
 Maintainer: Leandro Lisboa Penz <lpenz@lpenz.org>
-Build-Depends: debhelper (>= 8.0.0)
+Build-Depends: debhelper (>= 8.0.0), python
 Standards-Version: 3.9.5
 Vcs-Browser: http://github.com/lpenz/watchng
 Vcs-Git: git://github.com/lpenz/watchng.git
