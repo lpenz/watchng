@@ -6,7 +6,6 @@ For usage, run ``watchng --help``.
 
 import sys
 import os
-import re
 import subprocess
 import hashlib
 import datetime
@@ -15,7 +14,7 @@ from time import sleep
 
 
 PROGRAM_NAME = "watchng"
-PROGRAM_VERSION = "1.0"
+PROGRAM_VERSION = "1.1"
 
 __version__ = PROGRAM_VERSION
 
