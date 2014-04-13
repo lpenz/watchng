@@ -1,8 +1,10 @@
 script:
- - git archive --prefix=watchng_1.1/ --format=tar -o ../watchng_1.1.orig.tar HEAD
- - gzip ../watchng_1.1.orig.tar
- - dpkg-buildpackage -uc -us
- - lintian
+ - sed -n 's@PROGRAM_VERSION = .\([0-9.]\+\).$@\1@p' watchng > /tmp/v
+ - cat /tmp/v
+ - git archive --prefix=watchng_$(cat /tmp/v)/ --format=tar -o ../watchng_$(cat /tmp/v).orig.tar HEAD
+ - gzip ../watchng_$(cat /tmp/v).orig.tar
+ - dpkg-buildpackage -uc -us -sa
+ - lintian -c -i ../*.changes
 before_install:
  - sudo apt-get update -qq
  - sudo apt-get install -qq txt2tags lintian
