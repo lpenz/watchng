@@ -1,2 +1,2 @@
 version=3
-http://githubredir.debian.net/github/lpenz/watchng (.*).tar.gz
+http://githubredir.debian.net/github/lpenz/watchng/([0-9.]+).tar.gz
