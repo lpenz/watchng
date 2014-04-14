@@ -1,0 +1,5 @@
+debian/files
+debian/watchng.debhelper.log
+debian/watchng.substvars
+debian/watchng/
+watchng.1
