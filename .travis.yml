@@ -1,8 +1,8 @@
 script:
- - sed -n 's@PROGRAM_VERSION = .\([0-9.]\+\).$@\1@p' watchng > /tmp/v
+ - sed -n 's@PROGRAM_VERSION = .\([0-9.]\+\).$@watchng_\1@p' watchng > /tmp/v
  - cat /tmp/v
- - git archive --prefix=watchng_$(cat /tmp/v)/ --format=tar -o ../watchng_$(cat /tmp/v).orig.tar HEAD
- - gzip ../watchng_$(cat /tmp/v).orig.tar
+ - git archive --prefix=$(cat /tmp/v)/ --format=tar -o ../$(cat /tmp/v).orig.tar HEAD
+ - gzip ../$(cat /tmp/v).orig.tar
  - dpkg-buildpackage -uc -us -sa
  - lintian -c -i ../*.changes
 before_install:
