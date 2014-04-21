@@ -1,3 +1,9 @@
+watchng (1.1-2) unstable; urgency=low
+
+  * Fixed build-depends to include txt2tags.
+
+ -- Leandro Lisboa Penz <lpenz@lpenz.org>  Mon, 21 Apr 2014 19:29:52 -0300
+
 watchng (1.1-1) unstable; urgency=medium
 
   * New upstream version 1.1: doc fixes.
