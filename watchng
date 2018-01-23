@@ -12,13 +12,13 @@ import datetime
 from optparse import OptionParser
 from time import sleep
 
-
 PROGRAM_NAME = "watchng"
 PROGRAM_VERSION = "1.1"
 
 __version__ = PROGRAM_VERSION
 
 # Useful functions: ##########################################################
+
 
 def uptime():
     '''Uptime used as a monotonic clock.'''
@@ -27,22 +27,27 @@ def uptime():
 
 
 def consolesize():
-    rows, columns = os.popen('stty size', 'r').read().split() # rows, columns
+    rows, columns = os.popen('stty size', 'r').read().split()  # rows, columns
     return int(rows), int(columns)
 
 
 # Core function: #############################################################
 
+
 def runit(cfg, args, maxrows):
-    p = subprocess.Popen(args, shell = cfg.shell, stdout = subprocess.PIPE, stderr = subprocess.STDOUT)
+    p = subprocess.Popen(
+        args,
+        shell=cfg.shell,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT)
     rv = []
     rows = 0
     m = hashlib.md5()
     for l in p.stdout:
         rv.append(l)
         m.update(l)
-        rows +=1
-        if rows > maxrows-3:
+        rows += 1
+        if rows > maxrows - 3:
             p.kill()
             break
     p.wait()
@@ -57,9 +62,11 @@ def doit(cfg, args):
         output, outhash = runit(cfg, args, maxrows)
         if outlast and outlast == outhash:
             continue
-        if outlast != None:
+        if outlast is not None:
             sys.stdout.write('\n')
-        sys.stdout.write('$ %s # every %d seconds, last at %s\n' % (' '.join(args), cfg.period, str(datetime.datetime.now())))
+        sys.stdout.write('$ %s # every %d seconds, last at %s\n' %
+                         (' '.join(args), cfg.period,
+                          str(datetime.datetime.now())))
         for l in output:
             sys.stdout.write(l[:maxcolumns])
         outlast = outhash
@@ -67,22 +74,29 @@ def doit(cfg, args):
 
 
 def main():
-    parser = OptionParser(usage='Usage: %prog [options] <command>',
-                          version='%prog '+__version__,
-                          description='''\
+    parser = OptionParser(
+        usage='Usage: %prog [options] <command>',
+        version='%prog ' + __version__,
+        description='''\
 watchng runs a command periodically, showing output only when it changes.
-'''
-                        )
-    parser.add_option('-c', '--shell', dest='shell',
-                      action='store_true', default=False,
-                      help='Run args with /bin/sh -c')
-    parser.add_option('-p', '--period', dest='period',
-                      type='int', default=1,
-                      help='Period between re-runs.')
+''')
+    parser.add_option(
+        '-c',
+        '--shell',
+        dest='shell',
+        action='store_true',
+        default=False,
+        help='Run args with /bin/sh -c')
+    parser.add_option(
+        '-p',
+        '--period',
+        dest='period',
+        type='int',
+        default=1,
+        help='Period between re-runs.')
     (cfg, args) = parser.parse_args()
     doit(cfg, args)
 
 
 if __name__ == '__main__':
     main()
-
