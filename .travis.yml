@@ -1,5 +1,14 @@
-script: make && pyflakes watchng
-before_install:
- - sudo apt-get update -qq
- - sudo apt-get install -qq txt2tags pyflakes
-
+---
+jobs:
+  include:
+    - env: [ ACTION=default ]
+      language: python
+      addons: { apt: { packages: [ txt2tags ] } }
+      install: true
+      script: make
+    - env: [ ACTION=omnilint ]
+      language: generic
+      sudo: required # docker
+      services: [ docker ]
+      install: docker pull lpenz/omnilint
+      script: docker run --rm -v "$PWD:$PWD" -e "RWD=$PWD" -e "MY_UID=$UID" lpenz/omnilint
