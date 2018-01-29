@@ -12,3 +12,12 @@ jobs:
       services: [ docker ]
       install: docker pull lpenz/omnilint
       script: docker run --rm -v "$PWD:$PWD" -e "RWD=$PWD" -e "MY_UID=$UID" lpenz/omnilint
+deploy:
+  provider: pypi
+  user: lpenz
+  password:
+    secure: cIYfZyYIFyavK6FHd8kj1vRGQSoEEnhVEgbkXGCs/SHAgNzezAu/idhUeu1E3T2mW/LBrldEVXE9tQYsOlmWBg1t1W+sWNgWRcURBDA6vh2/GJOI54B7BMVBaShXRtKNAhdujYMdRUG7DC/RRGOCFtnxLtnzseK1ND+kqqKGJ0Y=
+  on:
+    tags: true
+    distributions: sdist bdist_wheel
+    repo: lpenz/watchng
