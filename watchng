@@ -13,7 +13,7 @@ from optparse import OptionParser
 from time import sleep
 
 PROGRAM_NAME = "watchng"
-PROGRAM_VERSION = "1.1"
+PROGRAM_VERSION = "1.1.2"
 
 __version__ = PROGRAM_VERSION
 
