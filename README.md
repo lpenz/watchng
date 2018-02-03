@@ -1,7 +1,10 @@
 [![Build Status](https://travis-ci.org/lpenz/watchng.png?branch=master)](https://travis-ci.org/lpenz/watchng)
+[![PyPI version](https://badge.fury.io/py/watchng.svg)](https://badge.fury.io/py/watchng)
+
 
 watchng
 =======
+
 
 # About
 
@@ -16,6 +19,7 @@ watchng --help
 watchng [--period=<n>] [--shell] <command...>
 ~~~
 
+
 ## Options
 
 **-h, --help** Help.
@@ -23,5 +27,4 @@ watchng [--period=<n>] [--shell] <command...>
 **-p, --period seconds** Set the interval between command executions
 
 **-c, --shell** Run command through shell - as $SHELL -c <command...>
-
 
