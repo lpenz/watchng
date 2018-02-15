@@ -26,6 +26,7 @@ setup(
     url="http://github.com/lpenz/watchng",
     data_files=[('man/man1', ['watchng.1'])],
     scripts=["watchng"],
+    install_requires=['uptime'],
     long_description="""\
 watchng is a program that runs the given command-line periodically, showing
 the output only when it is different than the last, along with the time.

@@ -11,6 +11,7 @@ import hashlib
 import datetime
 from optparse import OptionParser
 from time import sleep
+from uptime import uptime
 
 PROGRAM_NAME = "watchng"
 PROGRAM_VERSION = "1.1.2"
@@ -18,12 +19,6 @@ PROGRAM_VERSION = "1.1.2"
 __version__ = PROGRAM_VERSION
 
 # Useful functions: ##########################################################
-
-
-def uptime():
-    '''Uptime used as a monotonic clock.'''
-    with open('/proc/uptime') as f:
-        return float(f.readline().split()[0])
 
 
 def consolesize():
