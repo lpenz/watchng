@@ -14,7 +14,7 @@ from time import sleep
 from uptime import uptime
 
 PROGRAM_NAME = "watchng"
-PROGRAM_VERSION = "1.1.2"
+PROGRAM_VERSION = "1.2.0"
 
 __version__ = PROGRAM_VERSION
 
