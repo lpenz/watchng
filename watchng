@@ -65,7 +65,7 @@ def doit(cfg, args):
         for l in output:
             sys.stdout.write(l[:maxcolumns])
         outlast = outhash
-        sleep(cfg.period - (uptime() - start))
+        sleep(max(0, cfg.period - (uptime() - start)))
 
 
 def main():
