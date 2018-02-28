@@ -1,3 +1,6 @@
+.cache/
+__pycache__/
 /build/
 /dist/
 /watchng.egg-info/
+*.pyc
