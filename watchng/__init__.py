@@ -28,10 +28,10 @@ def consolesize():
 # Core function: #############################################################
 
 
-def runit(cfg, args, maxrows):
+def run1(args, maxrows, shell=False):
     p = subprocess.Popen(
         args,
-        shell=cfg.shell,
+        shell=shell,
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT)
     rv = []
@@ -48,20 +48,20 @@ def runit(cfg, args, maxrows):
     return rv, m.hexdigest()
 
 
-def doit(cfg, args):
+def runall(args, period=1, shell=False):
     maxrows, maxcolumns = consolesize()
     outlast = None
     while True:
         start = uptime()
-        output, outhash = runit(cfg, args, maxrows)
+        output, outhash = run1(args, maxrows, shell=shell)
         if outlast and outlast == outhash:
             continue
         if outlast is not None:
             sys.stdout.write('\n')
         sys.stdout.write('$ %s # every %d seconds, last at %s\n' %
-                         (' '.join(args), cfg.period,
+                         (' '.join(args), period,
                           str(datetime.datetime.now())))
         for l in output:
             sys.stdout.write(l[:maxcolumns])
         outlast = outhash
-        sleep(max(0, cfg.period - (uptime() - start)))
+        sleep(max(0, period - (uptime() - start)))

@@ -31,7 +31,7 @@ watchng runs a command periodically, showing output only when it changes.
         default=1,
         help='Period between re-runs.')
     (cfg, args) = parser.parse_args()
-    watchng.doit(cfg, args)
+    watchng.runall(args, period=cfg.period, shell=cfg.shell)
 
 
 if __name__ == '__main__':
