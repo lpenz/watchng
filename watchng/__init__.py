@@ -9,8 +9,8 @@ import os
 import subprocess
 import hashlib
 import datetime
+import uptime as upt
 from time import sleep
-from uptime import uptime
 
 PROGRAM_NAME = "watchng"
 PROGRAM_VERSION = "1.2.0"
@@ -21,8 +21,15 @@ __version__ = PROGRAM_VERSION
 
 
 def consolesize():
-    rows, columns = os.popen('stty size', 'r').read().split()  # rows, columns
-    return int(rows), int(columns)
+    fd = os.popen('stty size', 'r')
+    for l in fd:
+        rows, columns = l.split()
+        return int(rows), int(columns)
+    return None, None
+
+
+def uptime():
+    return upt.uptime()
 
 
 # Core function: #############################################################
@@ -30,10 +37,7 @@ def consolesize():
 
 def run1(args, maxrows, shell=False):
     p = subprocess.Popen(
-        args,
-        shell=shell,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.STDOUT)
+        args, shell=shell, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     rv = []
     rows = 0
     m = hashlib.md5()
