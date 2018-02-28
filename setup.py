@@ -9,7 +9,7 @@ import re
 
 
 def version_get():
-    with open('watchng') as fd:
+    with open('watchng/__init__.py') as fd:
         for line in fd:
             m = re.match('^PROGRAM_VERSION = "(?P<version>[0-9.]+)"', line)
             if m:
@@ -25,7 +25,8 @@ setup(
     author_email="lpenz@lpenz.org",
     url="http://github.com/lpenz/watchng",
     data_files=[('man/man1', ['watchng.1'])],
-    scripts=["watchng"],
+    packages=['watchng'],
+    scripts=["bin/watchng"],
     install_requires=['uptime'],
     long_description="""\
 watchng is a program that runs the given command-line periodically, showing

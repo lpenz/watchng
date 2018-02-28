@@ -9,7 +9,6 @@ import os
 import subprocess
 import hashlib
 import datetime
-from optparse import OptionParser
 from time import sleep
 from uptime import uptime
 
@@ -66,32 +65,3 @@ def doit(cfg, args):
             sys.stdout.write(l[:maxcolumns])
         outlast = outhash
         sleep(max(0, cfg.period - (uptime() - start)))
-
-
-def main():
-    parser = OptionParser(
-        usage='Usage: %prog [options] <command>',
-        version='%prog ' + __version__,
-        description='''\
-watchng runs a command periodically, showing output only when it changes.
-''')
-    parser.add_option(
-        '-c',
-        '--shell',
-        dest='shell',
-        action='store_true',
-        default=False,
-        help='Run args with /bin/sh -c')
-    parser.add_option(
-        '-p',
-        '--period',
-        dest='period',
-        type='int',
-        default=1,
-        help='Period between re-runs.')
-    (cfg, args) = parser.parse_args()
-    doit(cfg, args)
-
-
-if __name__ == '__main__':
-    main()
