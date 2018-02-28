@@ -13,7 +13,7 @@ import uptime as upt
 from time import sleep
 
 PROGRAM_NAME = "watchng"
-PROGRAM_VERSION = "1.2.0"
+PROGRAM_VERSION = "1.3.0"
 
 __version__ = PROGRAM_VERSION
 
