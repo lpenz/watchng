@@ -24,7 +24,7 @@ setup(
     author="Leandro Lisboa Penz",
     author_email="lpenz@lpenz.org",
     url="http://github.com/lpenz/watchng",
-    data_files=[('man/man1', ['watchng.1'])],
+    data_files=[('share/man/man1', ['watchng.1'])],
     packages=['watchng'],
     scripts=["bin/watchng"],
     install_requires=['uptime'],
