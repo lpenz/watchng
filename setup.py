@@ -27,7 +27,6 @@ setup(
     data_files=[('share/man/man1', ['watchng.1'])],
     packages=['watchng'],
     scripts=["bin/watchng"],
-    install_requires=['uptime'],
     long_description="""\
 watchng is a program that runs the given command-line periodically, showing
 the output only when it is different than the last, along with the time.

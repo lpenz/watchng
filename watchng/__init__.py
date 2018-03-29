@@ -9,8 +9,7 @@ import os
 import subprocess
 import hashlib
 import datetime
-import uptime as upt
-from time import sleep
+from time import sleep, time
 
 PROGRAM_NAME = "watchng"
 PROGRAM_VERSION = "1.3.1"
@@ -26,10 +25,6 @@ def consolesize():
         rows, columns = l.split()
         return int(rows), int(columns)
     return None, None
-
-
-def uptime():
-    return upt.uptime()
 
 
 # Core function: #############################################################
@@ -56,7 +51,7 @@ def runall(args, period=1, shell=False):
     maxrows, maxcolumns = consolesize()
     outlast = None
     while True:
-        start = uptime()
+        start = time()
         output, outhash = run1(args, maxrows, shell=shell)
         if outlast and outlast == outhash:
             continue
@@ -68,4 +63,4 @@ def runall(args, period=1, shell=False):
         for l in output:
             sys.stdout.write(l[:maxcolumns])
         outlast = outhash
-        sleep(max(0, period - (uptime() - start)))
+        sleep(max(0, period - (time() - start)))
