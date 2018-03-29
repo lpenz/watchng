@@ -1,0 +1,38 @@
+#!/usr/bin/python
+""" A tool to synchronize the current directory remotly using FTP.
+
+For usage, run ``watchng --help``.
+"""
+
+from optparse import OptionParser
+
+import watchng
+
+
+def main():
+    parser = OptionParser(
+        usage='Usage: %prog [options] <command>',
+        version='%prog ' + watchng.__version__,
+        description='''\
+watchng runs a command periodically, showing output only when it changes.
+''')
+    parser.add_option(
+        '-c',
+        '--shell',
+        dest='shell',
+        action='store_true',
+        default=False,
+        help='Run args with /bin/sh -c')
+    parser.add_option(
+        '-p',
+        '--period',
+        dest='period',
+        type='int',
+        default=1,
+        help='Period between re-runs.')
+    (cfg, args) = parser.parse_args()
+    watchng.runall(args, period=cfg.period, shell=cfg.shell)
+
+
+if __name__ == '__main__':
+    main()
