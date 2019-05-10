@@ -23,6 +23,7 @@ jobs:
     - stage: deploy
       install: true
       script: true
+      after_success: true
       deploy:
         provider: pypi
         user: lpenz
