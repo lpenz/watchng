@@ -1,24 +1,27 @@
 ---
-sudo: required # docker
-services: [docker]
 language: generic
+addons: { apt: { packages: [ qemu-user-static ] } }
+env:
+  - OS=debian   DIST=buster ARCH=amd64
+  - OS=raspbian DIST=buster ARCH=armhf
+install: docker pull lpenz/${OS}-${DIST}-${ARCH}
 script:
-  - docker pull debian:stretch
-  - docker run -d --name debian -v "$PWD/..":/home debian:stretch sleep 9999999999
-  - docker exec -t debian /bin/bash -c "apt-get update && apt-get install -y --no-install-recommends git-buildpackage fakeroot gcc build-essential debhelper txt2tags"
-  - docker exec -t debian /bin/bash -c "cd /home/watchng && gbp buildpackage --git-ignore-branch -us -uc"
+  - docker run -d --name debian -v "$PWD/..:$PWD/.." "lpenz/${OS}-${DIST}-${ARCH}" sleep 9999999999
+  - docker exec -t debian /bin/bash -c "apt-get update && apt-get install -y --no-install-recommends devscripts equivs git-buildpackage"
+  - docker exec -t debian /bin/bash -c "mk-build-deps -i -r --tool='apt-get -o Debug::pkgProblemResolver=yes --no-install-recommends --yes' $PWD/debian/control"
+  - docker exec -t debian /bin/bash -c "cd $PWD && gbp buildpackage --git-ignore-branch -us -uc"
   - docker rm -f debian
   - sudo chown -R "$USER:$USER" ../
   - ls -l ..
 deploy:
   provider: packagecloud
-  repository: lpenz
   username: lpenz
+  repository: $OS
   token:
     secure: nWcA7d/gUnRBl8UFvzFTPygHKBnkmNgAGOsvekm0nLK/Sgp+jMRi6CHtDtB3oRu6hYirLBomC8LVrC6rY27x6gbTfEw7m2qUV+IqmcabBW8UxlU8G9HiwqevcG3vOaundBOvWLtMloNgtct1AzfiWTsDNgYuEVsXimjlgeqBM7o=
-  dist: debian/stretch
-  local-dir: ".."
-  package_glob: "*.deb"
+  dist: $OS/$DIST
+  local-dir: '..'
+  package_glob: '*.deb'
   on:
     branch: debian-debian
     tags: true
