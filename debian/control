@@ -2,17 +2,16 @@ Source: watchng
 Section: python
 Priority: optional
 Maintainer: Leandro Lisboa Penz <lpenz@lpenz.org>
-Build-Depends: debhelper (>= 11), python, dh-python
+Build-Depends: debhelper (>= 11), python3, dh-python
 Standards-Version: 4.3.0
 Vcs-Browser: http://github.com/lpenz/watchng
 Vcs-Git: git://github.com/lpenz/watchng.git
 Homepage: http://github.com/lpenz/watchng
-X-Python-Version: >= 2.7
-X-Python3-Version: >= 3.4
+X-Python3-Version: >= 3.7
 
 Package: watchng
 Architecture: all
-Depends: python, ${python:Depends}, ${misc:Depends}
+Depends: python, ${python3:Depends}, ${misc:Depends}
 Description: Runs a command periodically, showing output only when it changes
  watchng is a program that runs the given command-line periodically, showing
  the output only when it is different than the last, along with the time.
