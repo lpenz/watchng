@@ -1,4 +1,7 @@
-#!/usr/bin/python
+# Copyright (C) 2012 Leandro Lisboa Penz <lpenz@lpenz.org>
+# This file is subject to the terms and conditions defined in
+# file 'LICENSE.txt', which is part of this source code package.
+
 """ A tool to synchronize the current directory remotly using FTP.
 
 For usage, run ``watchng --help``.
@@ -12,7 +15,7 @@ import datetime
 from time import sleep, time
 
 PROGRAM_NAME = "watchng"
-PROGRAM_VERSION = "1.3.3"
+PROGRAM_VERSION = "1.4"
 
 __version__ = PROGRAM_VERSION
 
