@@ -24,6 +24,7 @@ jobs:
     - stage: deploy
       install: true
       script: true
+      python: 3.7
       deploy:
         provider: pypi
         user: lpenz
