@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 #
 # Copyright (C) 2012 Leandro Lisboa Penz <lpenz@lpenz.org>
 # This file is subject to the terms and conditions defined in
