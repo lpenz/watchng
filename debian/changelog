@@ -1,3 +1,9 @@
+watchng (1.4-2) UNRELEASED; urgency=low
+
+  * Fix incorrect dependency on "python" (which is python 2)
+
+ -- Leandro Lisboa Penz <lpenz@lpenz.org>  Sat, 23 Nov 2019 17:56:24 +0000
+
 watchng (1.4-1) UNRELEASED; urgency=low
 
   * Use python 3

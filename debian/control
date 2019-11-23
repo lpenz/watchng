@@ -11,7 +11,7 @@ X-Python3-Version: >= 3.7
 
 Package: watchng
 Architecture: all
-Depends: python, ${python3:Depends}, ${misc:Depends}
+Depends: ${python3:Depends}, ${misc:Depends}
 Description: Runs a command periodically, showing output only when it changes
  watchng is a program that runs the given command-line periodically, showing
  the output only when it is different than the last, along with the time.
