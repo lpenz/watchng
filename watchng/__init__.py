@@ -15,7 +15,7 @@ import datetime
 from time import sleep, time
 
 PROGRAM_NAME = "watchng"
-PROGRAM_VERSION = "1.4"
+PROGRAM_VERSION = "1.4.1"
 
 __version__ = PROGRAM_VERSION
 
