@@ -15,7 +15,7 @@ import datetime
 from time import sleep, time
 
 PROGRAM_NAME = "watchng"
-PROGRAM_VERSION = "1.4"
+PROGRAM_VERSION = "1.4.1"
 
 __version__ = PROGRAM_VERSION
 
@@ -64,6 +64,6 @@ def runall(args, period=1, shell=False):
                          (' '.join(args), period,
                           str(datetime.datetime.now())))
         for l in output:
-            sys.stdout.write(l[:maxcolumns])
+            sys.stdout.write(l[:maxcolumns].decode(sys.stdout.encoding))
         outlast = outhash
         sleep(max(0, period - (time() - start)))
