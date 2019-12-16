@@ -1,3 +1,9 @@
+watchng (1.4.1-1) UNRELEASED; urgency=low
+
+  * New upstream release: use proper encoding for sys.stdout.write
+
+ -- Leandro Lisboa Penz <lpenz@lpenz.org>  Mon, 16 Dec 2019 23:57:03 +0000
+
 watchng (1.4-2) UNRELEASED; urgency=low
 
   * Fix incorrect dependency on "python" (which is python 2)
