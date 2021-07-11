@@ -1,13 +1,9 @@
-[![Build Status](https://travis-ci.org/lpenz/watchng.png?branch=master)](https://travis-ci.org/lpenz/watchng)
-[![codecov](https://codecov.io/gh/lpenz/watchng/branch/master/graph/badge.svg)](https://codecov.io/gh/lpenz/watchng)
-[![PyPI version](https://badge.fury.io/py/watchng.svg)](https://badge.fury.io/py/watchng)
+[![CI](https://github.com/lpenz/watchng/actions/workflows/ci.yml/badge.svg)](https://github.com/lpenz/watchng/actions/workflows/ci.yml)
+[![coveralls](https://coveralls.io/repos/github/lpenz/watchng/badge.svg?branch=main)](https://coveralls.io/github/lpenz/watchng?branch=main)
+[![packagecloud](https://img.shields.io/badge/deb-packagecloud.io-844fec.svg)](https://packagecloud.io/app/lpenz/debian/search?q=watchng)
 
 
-watchng
-=======
-
-
-# About
+# watchng
 
 watchng is a program that runs the given command-line periodically, showing the
 output only when it is different than the last, along with the time.

@@ -1,0 +1,80 @@
+---
+name: CI
+on: [ push, pull_request ]
+jobs:
+  omnilint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: docker://lpenz/omnilint:v0.2
+  black:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: piotrpawlaczek/python-blacken@release/stable
+        with:
+          line-length: 88
+  install:
+    strategy:
+      matrix:
+        python-version:
+          - 3.6
+          - 3.7
+          - 3.8
+          - 3.9
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python3 -m pip install .
+  test:
+    strategy:
+      matrix:
+        python-version:
+          - 3.6
+          - 3.7
+          - 3.8
+          - 3.9
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+      - uses: lpenz/ghaction-pytest-cov@v1
+      - uses: AndreMiras/coveralls-python-action@v20201129
+        with:
+          parallel: true
+          flag-name: python-${{ matrix.python-version }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+  coverage-finish:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: AndreMiras/coveralls-python-action@v20201129
+        with:
+          parallel-finished: true
+  packagecloud:
+    needs: [ omnilint, black, install, test ]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - id: version
+        uses: docker://lpenz/ghaction-version-gen:0.3
+      - uses: ./.github/actions/ghaction-python-stdeb
+        with:
+          debian_revision: ${{ steps.version.outputs.distance }}
+      - run: |
+          dpkg --info *.deb
+          dpkg --contents *.deb
+      - uses: docker://lpenz/ghaction-packagecloud:v0.3
+        if: steps.version.outputs.version_commit != ''
+        with:
+          repository: debian/debian/buster
+        env:
+          PACKAGECLOUD_TOKEN: ${{ secrets.PACKAGECLOUD_TOKEN }}
+

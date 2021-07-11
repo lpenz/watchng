@@ -1,0 +1,10 @@
+---
+name: ghaction-python-stdeb
+description: Build a python3 debian package using stdeb
+inputs:
+  debian_revision:
+    description: Debian revision to use
+    default: 1
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
