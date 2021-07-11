@@ -23,7 +23,7 @@ __version__ = PROGRAM_VERSION
 
 
 def consolesize():
-    fd = os.popen('stty size', 'r')
+    fd = os.popen("stty size", "r")
     for l in fd:
         rows, columns = l.split()
         return int(rows), int(columns)
@@ -35,7 +35,8 @@ def consolesize():
 
 def run1(args, maxrows, shell=False):
     p = subprocess.Popen(
-        args, shell=shell, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+        args, shell=shell, stdout=subprocess.PIPE, stderr=subprocess.STDOUT
+    )
     rv = []
     rows = 0
     m = hashlib.md5()
@@ -59,10 +60,11 @@ def runall(args, period=1, shell=False):
         if outlast and outlast == outhash:
             continue
         if outlast is not None:
-            sys.stdout.write('\n')
-        sys.stdout.write('$ %s # every %d seconds, last at %s\n' %
-                         (' '.join(args), period,
-                          str(datetime.datetime.now())))
+            sys.stdout.write("\n")
+        sys.stdout.write(
+            "$ %s # every %d seconds, last at %s\n"
+            % (" ".join(args), period, str(datetime.datetime.now()))
+        )
         for l in output:
             sys.stdout.write(l[:maxcolumns].decode(sys.stdout.encoding))
         outlast = outhash
