@@ -8,20 +8,5 @@
 watchng is a program that runs the given command-line periodically, showing the
 output only when it is different than the last, along with the time.
 
-
-# Usage
-
-~~~[.sh]
-watchng --help
-watchng [--period=<n>] [--shell] <command...>
-~~~
-
-
-## Options
-
-**-h, --help** Help.
-
-**-p, --period seconds** Set the interval between command executions
-
-**-c, --shell** Run command through shell - as $SHELL -c <command...>
-
+**This repository is no longer maintained, please look at
+  [ogle](https://github.com/lpenz/ogle) for an alternative.**
